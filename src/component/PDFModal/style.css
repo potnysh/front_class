@@ -1,0 +1,76 @@
+.modal-container {
+  position: absolute;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10000;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.347);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ 
+  }
+  
+.rout_button{
+  margin-top: 20px;
+  color: white;
+  background-color: rgba(0, 0, 0, 1);
+  font-size: 20px;
+  border-radius: 10px;
+  height: 50px;
+  border: none;
+  width: 300px;
+}
+
+
+
+.pagination{
+  display: flex;
+}
+
+  .modal {
+    position: fixed;
+  z-index: 10010;
+  background-color: rgba(255, 248, 228, 1);
+  border-radius: 30px;
+  width: 700px;
+  height: 800px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  }
+  
+  .pdf-container {
+    height: 800px; /* Фіксована висота */
+    overflow-y: scroll; /* Включаємо прокрутку */
+  }
+
+  .TextLayer{
+    display: none;
+  }
+
+.react-pdf__Page__annotations{
+  display: none;
+}
+
+.react-pdf__Page{
+  height: 800px;
+}
+
+.react-pdf__Document{
+  height: 800px;
+}
+
+
+
+
+.react-pdf__Page__canvas{
+  max-height: 800px;
+}
+
+.pdf-container{
+  height: 800px;
+}

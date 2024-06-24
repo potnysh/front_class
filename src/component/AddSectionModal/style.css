@@ -1,0 +1,85 @@
+.modal-container {
+  position: absolute;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10000;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.347);
+ 
+}
+
+.modal {
+  position: fixed;
+  z-index: 10010;
+  background-color: rgba(255, 248, 228, 1);
+  border-radius: 30px;
+  width: 900px;
+  height: 800px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-content: flex-start;
+}
+
+.inputs{
+  align-items: center;
+  width: 100%;
+  margin-top: 70px;
+  flex-direction: column;
+  display: flex;
+  gap: 15px;
+}
+
+input{
+  font-size: 20px;
+  border-radius: 10px;
+  height: 50px;
+  border: none;
+  width: 350px;
+}
+
+h1{
+  width: 100%;
+  text-align: center;
+  font-family: 'Inter', serif;
+  font-weight: 400;
+  font-size: 40px;
+  height: 100px;
+}
+
+.icon_box{
+justify-content: center;
+  width: 100%;
+  margin-top: 20px;
+  display: flex;
+  gap: 5px;
+}
+
+.icon{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 54px;
+  height: 54px;
+  border: 3px solid;
+  border-radius: 15px;
+  transition: 0.4s ease;
+}
+
+.icon.selected{
+  background-color:#bdff6a;;
+}
+
+.accept_button{
+  margin-top: 20px;
+  color: white;
+  background-color: rgba(0, 0, 0, 1);
+  font-size: 20px;
+  border-radius: 10px;
+  height: 50px;
+  border: none;
+  width: 350px;
+}
+

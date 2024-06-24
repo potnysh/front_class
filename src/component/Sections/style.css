@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+.sections{
+    padding-top: 76px;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.section{
+    justify-content: space-between;
+    display: flex;
+    
+}
+
+.add_subparagraph_box{
+    margin-top: 20px;
+    margin-right: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.add_subparagraph{
+    
+        width: 470px;
+        height: 100px;
+        border: 3px solid;
+        border-radius: 28px;
+        background-color: rgba(255, 255, 255, 1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    
+}
+
+.add_subparagraph_box.openButton{
+    display: none;
+}
+
+.chapter{
+    margin-left: 50px;
+    gap: 10px;
+    display: flex;
+    justify-content: space-evenly
+}
+
+.chapter .chapterButton{
+    width: 560px;
+    height: 140px;
+    border: 3px solid;
+    border-radius: 28px;
+    background-color: rgba(255, 255, 255, 1);
+    display: flex;
+    align-items: center;
+    
+
+}
+
+.chapter_icon{
+    width: 20%;
+    display: flex;
+    justify-content: center;
+}
+
+
+.chapter_icon_box{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    height: 64px;
+  
+    border: 3px solid;
+    border-radius: 15px;
+    transition: 0.4s ease;
+}
+.chapter_icon_box.active {
+    background-color: #bdff6a;
+}
+ 
+.text_chapter{
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.text_chapter p{
+    margin: 0;
+    font-size: 30px;
+    font-family: 'Montserrat';
+    display: flex;
+    align-items: start;
+}
+.menu_icon {
+    position: relative;
+    width: 10%;
+  }
+
+
+  .menu {
+    position: absolute;
+    right: 0;
+    top: 24px;
+    background-color: white;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+  }
+  
+  .menu .edit_button {
+    display: block;
+    
+    padding: 8px 12px;
+    border: none;
+    background: none;
+    text-align: left;
+    cursor: pointer;
+  }
+  
+  .menu .edit_button:hover {
+    background-color: #f5f5f5;
+  }
+
+  .menu .delete_button {
+    display: block;
+    
+    padding: 8px 12px;
+    border: none;
+    background: none;
+    text-align: left;
+    cursor: pointer;
+  }
+  
+  .menu .delete_button:hover {
+    background-color: #f5f5f5;
+  }
