@@ -5,6 +5,7 @@ import { IconContext } from "react-icons";
 import { useState } from "react";
 import AddSectionModal from "../AddSectionModal";
 import LoginModal from "../LoginModal";
+import UserListModal from "../UserListModal";
 import { useSectionsContext } from "../SectionProvider";
 
 function Header() {
@@ -28,6 +29,16 @@ function Header() {
 
   console.log(user);
 
+  const [users, setUsers] = useState([
+    { id: 1, name: 'Freddy Adamson', status: 'User' },
+    { id: 2, name: 'Siver Maxim', status: 'Admin' },
+    { id: 3, name: 'Nicky Johnson', status: 'User' },
+  ]);
+
+  const updateUserStatus = (updatedUsers) => {
+    setUsers(updatedUsers);
+  };
+
   return (
     <div className="header">
       <div className="logo">
@@ -46,9 +57,15 @@ function Header() {
         </>
       )}
       {user?.status === "admin" ? (
-        <button className="log_buton" onClick={() => setOpenAdmin(!openAdmin)}>
-          Адмін
-        </button>
+        <>
+          <button className="log_buton" onClick={() => setOpenAdmin(!openAdmin)}>
+            Адмін
+          </button>
+
+          {openAdmin && <UserListModal logOut={logOut} setOpenAdmin={setOpenAdmin} updateUserStatus={updateUserStatus}  />}
+        </>
+
+
       ) : user ? (
         <button className="log_buton" onClick={() => logOut()}>
           Вийти

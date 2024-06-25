@@ -19,7 +19,7 @@ const Subparagraph = ({ openSub, subchapters, sectionId}) => {
   const [menuOpen, setMenuOpen] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
   const [editSubchapter, setEditSubchapter] = useState(null);
-  const { deleteSubchapter } = useSectionsContext();
+  const { deleteSubchapter, user } = useSectionsContext();
 
   const handleDelete = (sectionId, subchapterId) => {
     deleteSubchapter(sectionId, subchapterId);
@@ -57,6 +57,7 @@ const Subparagraph = ({ openSub, subchapters, sectionId}) => {
     setMenuOpen(menuOpen === id ? null : id);
   };
 
+
   return (
     <div className="subparagraph">
       {subchapters.map((subchapter) => (
@@ -72,16 +73,21 @@ const Subparagraph = ({ openSub, subchapters, sectionId}) => {
             <div className="text_subparagraph">
               <p>{subchapter.name}</p>
             </div>
+
+            {user?.status === "admin" && (
             <div className="menu_icon" onClick={(e) => e.stopPropagation()}>
             <div onClick={() => handleMenuToggle(subchapter._id)}>
               <IoEllipsisVertical size={35} />
             </div>
             {menuOpen === subchapter._id && (
+            
               <div className="menu">
                 <div className="delete_button" onClick={() => handleDelete(sectionId, subchapter._id)}>Видалити</div>
               </div>
             )}
+
           </div>
+            )}
           </button>
           
 

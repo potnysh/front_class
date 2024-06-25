@@ -44,6 +44,8 @@ export const SectionsProvider = ({ children }) => {
     }
   }
 
+
+
  const logOut = () => setUser(null)
 
   const getSession = async () => {
@@ -172,7 +174,7 @@ const signIn = async (authData) =>{
 
   return (
     <SectionsContext.Provider value={{
-      sections, setSections, addSection, deleteSection, updateSection, addSubchapter, deleteSubchapter, getPdfFile, user, logOut, signIn
+      sections, setSections, addSection, deleteSection, updateSection, addSubchapter, deleteSubchapter, getPdfFile, user, logOut, signIn 
     }}>
       {children}
     </SectionsContext.Provider>

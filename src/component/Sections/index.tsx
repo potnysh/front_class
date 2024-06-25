@@ -38,7 +38,6 @@ function Sections() {
 
   const { sections, setSections, deleteSection, user } = useSectionsContext();
 
-  console.log(sections);
   const [openSections, setOpenSections] = useState({});
   if (!sections) {
     return <div>loading...</div>;
@@ -56,7 +55,8 @@ function Sections() {
     return icon ? icon.component : GiCastle; // Default icon if not found
   };
 
-  const handleMenuToggle = (id) => {
+  const handleMenuToggle = (id, event) => {
+    event.stopPropagation(); // Запобігання поширенню події на батьківські елементи
     setMenuOpen(menuOpen === id ? null : id);
   };
 
@@ -65,7 +65,7 @@ function Sections() {
       {sections.map((section) => (
         <div key={section._id} className="section">
           <div className="chapter">
-            <button
+            <div
               className="chapterButton"
               onClick={() => toggleOpen(section._id)}
             >
@@ -84,51 +84,68 @@ function Sections() {
                 <p>{section.name}</p>
                 <p>{section.year}</p>
               </div>
-              <div className="menu_icon" onClick={(e) => e.stopPropagation()}>
-                <div onClick={() => handleMenuToggle(section._id)}>
+              {user?.status === "admin" && (
+                <div
+                  className="menu_icon"
+                  onClick={(e) => handleMenuToggle(section._id, e)}
+                  style={{ position: "relative" }}
+                >
                   <IoEllipsisVertical size={35} />
+                  {menuOpen === section._id && (
+                    <div className="menu" style={{ position: "absolute", top: "40px", right: "0px", zIndex: "1000" }}>
+                      <div
+                        className="edit_button"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setEditOpen(true);
+                        }}
+                      >
+                        Редагувати
+                      </div>
+                      <EditSectionModal
+                        closeEditModal={closeEditModal}
+                        editOpen={editOpen}
+                        sectionId={section._id}
+                      />
+                      <div
+                        className="delete_button"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          deleteSection(section._id);
+                        }}
+                      >
+                        Видалити
+                      </div>
+                    </div>
+                  )}
                 </div>
-                {menuOpen === section._id && user?.status === "admin" && (
-                  <div className="menu">
-                    <div
-                      className="edit_button"
-                      onClick={() => setEditOpen(!editOpen)}
-                    >
-                      Редагувати
-                    </div>
-                    <EditSectionModal
-                      closeEditModal={closeEditModal}
-                      editOpen={editOpen}
-                      sectionId={section._id}
-                    />
-                    <div
-                      className="delete_button"
-                      onClick={() => deleteSection(section._id)}
-                    >
-                      Видалити
-                    </div>
-                  </div>
-                )}
-              </div>
-            </button>
+              )}
+            </div>
           </div>
           <div
             className={`add_subparagraph_box ${
               openSections[section._id] ? "" : "openButton"
             }`}
           >
-            <button className="add_subparagraph" onClick={() => setOpen(!open)}>
-              <IconContext.Provider value={{ className: "add_icon" }}>
-                <div>
-                  <IoAdd />
-                </div>
-              </IconContext.Provider>
-            </button>
-            <AddSubparagraphModal
-              closeModal={closeModal}
-              open={open}
-              sectionId={section._id}
-            />
+            {user?.status === "admin" && (
+              <>
+                <button
+                  className="add_subparagraph"
+                  onClick={() => setOpen(!open)}
+                >
+                  <IconContext.Provider value={{ className: "add_icon" }}>
+                    <div>
+                      <IoAdd />
+                    </div>
+                  </IconContext.Provider>
+                </button>
+                <AddSubparagraphModal
+                  closeModal={closeModal}
+                  open={open}
+                  sectionId={section._id}
+                />
+              </>
+            )}
             <Subparagraph
               openSub={openSections[section._id]}
               subchapters={section.subchapter}

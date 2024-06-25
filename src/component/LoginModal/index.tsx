@@ -63,7 +63,7 @@ const LoginForm = ({ setIsRegister, closeModal }) => {
           onChange={(e) => setEmail(e.target.value)}
         />
         <input
-          type="text"
+          type="password"
           placeholder="*Пароль"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
@@ -128,7 +128,7 @@ const RegisterForm = ({ setIsRegister }) => {
         <input
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          type="text"
+          type="password"
           placeholder="*Пароль"
         />
       </div>
